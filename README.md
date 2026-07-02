@@ -2,7 +2,7 @@
   <img src="img/logo.png" alt="Logo SafeMeal" width="300">
 </p>
 
-# 🌐 SMAS - SafeMeal Frontend
+# SMAS - SafeMeal Frontend
 
 **SafeMeal Frontend** es la interfaz web del sistema **SafeMeal (SMAS)**, desarrollada con HTML, CSS y JavaScript. Su objetivo es ofrecer una experiencia intuitiva para que los usuarios puedan registrarse, iniciar sesión y consultar recomendaciones alimentarias personalizadas de acuerdo con sus padecimientos.
 
@@ -48,7 +48,7 @@
 
 ## 📌 Estado del proyecto
 
-Proyecto finalizado con el frontend completamente funcional e integrado con el backend.
+Proyecto finalizado con el frontend completamente funcional e integrado con el backend(https://github.com/N1sse/SafeMeal.git).
 
 ---
 
@@ -57,6 +57,7 @@ Proyecto finalizado con el frontend completamente funcional e integrado con el b
 | Fecha | Hash | Mensaje de commit | Autor |
 |-------|------|-------------------|-------|
 | 1/07/2026 | b21cc19 | first commit | N1sse |
+| 1/07/2026 | 61860bf | Agregando README e identificador grafico en el README” | N1sse |
 
 ---
 
