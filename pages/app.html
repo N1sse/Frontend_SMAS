@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeMeal — Sistema</title>
+
+   <!-------  icono para pestañas  --------->
+    <!----Apple---->
+    <link rel="apple-touch-icon" href="../img/icono.webp">
+     <!----windows/etc---->
+    <link rel="shortcut icon" type="image/x-icon" href="../img/icono.webp">
+
+   <!-------  Estilos  --------->  
+  <link rel="stylesheet" href="../style/styles.css" />
+</head>
+<body class="pagina-app">
+
+  <!-- ============ TOPBAR (sin hero, solo cuando hay sesión) ============ -->
+  <header class="topbar" id="topbar" hidden>
+    <a href="../index.html" class="logo logo-topbar">
+      <img class="icono" src="../img/logo_green.webp" alt="SafeMeal">
+    </a>
+
+    <button class="nav-toggle nav-toggle-dark" id="topbarToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="topbar-nav" id="topbarNav">
+      <a href="#" data-vista="recomendaciones" class="topbar-link">Recomendaciones</a>
+      <a href="#" data-vista="padecimientos" class="topbar-link">Padecimientos</a>
+      <a href="#" data-vista="alimentos" class="topbar-link">Alimentos</a>
+      <a href="#" data-vista="perfil" class="topbar-link">Mi Perfil</a>
+      <button class="btn btn-salir btn-sm" id="btnCerrarSesion">Cerrar sesión</button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+
+    <!-- ============ LOGIN ============ -->
+    <section class="vista vista-auth" id="vista-login">
+      <div class="card card-auth">
+        <h1 class="titulo-pagina">Iniciar sesión</h1>
+        <p class="sub-pagina">Bienvenido de nuevo a SafeMeal.</p>
+
+        <form id="formLogin" novalidate>
+          <div class="campo" data-required>
+            <label for="login-email">Usuario o email</label>
+            <div class="input-wrap">
+              <input type="email" id="login-email" name="email" autocomplete="email" />
+              <span class="icono-error" aria-hidden="true">!</span>
+            </div>
+            <p class="mensaje-error" id="login-email-error" role="alert"></p>
+            <div class="tooltip-alerta" role="alert">
+              <span class="tooltip-icono">!</span>
+              <span class="tooltip-texto">Por favor, complete este campo.</span>
+            </div>
+          </div>
+
+          <div class="campo" data-required>
+            <label for="login-password">Contraseña</label>
+            <div class="input-wrap">
+              <input type="password" id="login-password" name="password" autocomplete="current-password" />
+              <span class="icono-error" aria-hidden="true">!</span>
+              <button type="button" class="toggle-pass" data-target="login-password" aria-label="Mostrar contraseña">👁</button>
+            </div>
+            <p class="mensaje-error" id="login-password-error" role="alert"></p>
+            <div class="tooltip-alerta" role="alert">
+              <span class="tooltip-icono">!</span>
+              <span class="tooltip-texto">Por favor, complete este campo.</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primario btn-block">Iniciar sesión</button>
+        </form>
+
+        <p class="auth-cambio">¿No tienes cuenta?
+          <a href="#" data-vista="registro">Crea una aquí</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ REGISTRO ============ -->
+    <section class="vista vista-auth" id="vista-registro" hidden>
+      <div class="card card-auth card-ancha">
+        <h1 class="titulo-pagina">Crear cuenta</h1>
+        <p class="sub-pagina">Únete a SafeMeal y come con seguridad.</p>
+
+        <form id="formRegistro" novalidate>
+          <div class="grid-2">
+            <div class="campo" data-required>
+              <label for="reg-name">Nombre</label>
+              <div class="input-wrap">
+                <input type="text" id="reg-name" name="name" />
+                <span class="icono-error" aria-hidden="true">!</span>
+              </div>
+              <p class="mensaje-error" id="reg-name-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+            </div>
+
+            <div class="campo" data-required>
+              <label for="reg-gender">Género</label>
+              <div class="input-wrap">
+                <select id="reg-gender" name="gender">
+                  <option value="">Selecciona…</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Otro">Otro</option>
+                  <option value="Prefiero no decir">Prefiero no decir</option>
+                </select>
+                <span class="icono-error" aria-hidden="true">!</span>
+              </div>
+              <p class="mensaje-error" id="reg-gender-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="campo" data-required>
+              <label for="reg-dateBirth">Fecha de nacimiento</label>
+              <div class="input-wrap">
+                <input type="date" id="reg-dateBirth" name="dateBirth" />
+                <span class="icono-error" aria-hidden="true">!</span>
+              </div>
+              <p class="mensaje-error" id="reg-dateBirth-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+            </div>
+
+            <div class="campo" data-required>
+              <label for="reg-role">Rol</label>
+              <div class="input-wrap">
+                <select id="reg-role" name="role">
+                  <option value="">Selecciona…</option>
+                  <option value="usuario">Usuario</option>
+                  <option value="editor">Editor (administrador)</option>
+                </select>
+                <span class="icono-error" aria-hidden="true">!</span>
+              </div>
+              <p class="mensaje-error" id="reg-role-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="campo" data-required>
+            <label for="reg-email">Correo electrónico</label>
+            <div class="input-wrap">
+              <input type="email" id="reg-email" name="email" />
+              <span class="icono-error" aria-hidden="true">!</span>
+            </div>
+            <p class="mensaje-error" id="reg-email-error" role="alert"></p>
+            <div class="tooltip-alerta" role="alert">
+              <span class="tooltip-icono">!</span>
+              <span class="tooltip-texto">Por favor, complete este campo.</span>
+            </div>
+          </div>
+
+          <div class="campo" data-required>
+            <label for="reg-password">Contraseña</label>
+            <div class="input-wrap">
+              <input type="password" id="reg-password" name="password" />
+              <span class="icono-error" aria-hidden="true">!</span>
+              <button type="button" class="toggle-pass" data-target="reg-password" aria-label="Mostrar contraseña">👁</button>
+            </div>
+            <p class="mensaje-error" id="reg-password-error" role="alert"></p>
+            <div class="tooltip-alerta" role="alert">
+              <span class="tooltip-icono">!</span>
+              <span class="tooltip-texto">Por favor, complete este campo.</span>
+            </div>
+
+            <!-- Indicador de requisitos en tiempo real -->
+            <ul class="requisitos" id="reqPassword">
+              <li data-req="longitud"><span class="req-check">✗</span> Entre 8 y 64 caracteres</li>
+              <li data-req="minuscula"><span class="req-check">✗</span> Una minúscula</li>
+              <li data-req="mayuscula"><span class="req-check">✗</span> Una mayúscula</li>
+              <li data-req="numero"><span class="req-check">✗</span> Un número</li>
+              <li data-req="especial"><span class="req-check">✗</span> Un carácter especial (. , + ? ! * # $ …)</li>
+            </ul>
+          </div>
+
+          <button type="submit" class="btn btn-primario btn-block">Registrarme</button>
+        </form>
+
+        <p class="auth-cambio">¿Ya tienes cuenta?
+          <a href="#" data-vista="login">Inicia sesión</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PERFIL / MIS DATOS ============ -->
+    <section class="vista vista-interna" id="vista-perfil" hidden>
+      <header class="vista-encabezado">
+        <h1 class="titulo-pagina">Mi perfil</h1>
+        <p class="sub-pagina">Edita tus datos personales.</p>
+      </header>
+
+      <div class="grid-2 grid-perfil">
+        <div class="card">
+          <h3>Datos personales</h3>
+          <form id="formPerfil" novalidate>
+            <div class="campo" data-required>
+              <label for="perfil-name">Nombre</label>
+              <div class="input-wrap">
+                <input type="text" id="perfil-name" name="name" />
+                <span class="icono-error" aria-hidden="true">!</span>
+              </div>
+              <p class="mensaje-error" id="perfil-name-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+            </div>
+
+            <div class="campo" data-required>
+              <label for="perfil-dateBirth">Fecha de cumpleaños</label>
+              <div class="input-wrap">
+                <input type="date" id="perfil-dateBirth" name="dateBirth" />
+                <span class="icono-error" aria-hidden="true">!</span>
+              </div>
+              <p class="mensaje-error" id="perfil-dateBirth-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="perfil-email">Correo (no editable)</label>
+              <div class="input-wrap">
+                <input type="email" id="perfil-email" name="email" disabled />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primario">Guardar cambios</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Cambiar contraseña</h3>
+          <form id="formPassword" novalidate>
+            <div class="campo" data-required>
+              <label for="perfil-password">Nueva contraseña</label>
+              <div class="input-wrap">
+                <input type="password" id="perfil-password" name="password" />
+                <span class="icono-error" aria-hidden="true">!</span>
+                <button type="button" class="toggle-pass" data-target="perfil-password" aria-label="Mostrar contraseña">👁</button>
+              </div>
+              <p class="mensaje-error" id="perfil-password-error" role="alert"></p>
+              <div class="tooltip-alerta" role="alert">
+                <span class="tooltip-icono">!</span>
+                <span class="tooltip-texto">Por favor, complete este campo.</span>
+              </div>
+
+              <ul class="requisitos" id="reqPasswordPerfil">
+                <li data-req="longitud"><span class="req-check">✗</span> Entre 8 y 64 caracteres</li>
+                <li data-req="minuscula"><span class="req-check">✗</span> Una minúscula</li>
+                <li data-req="mayuscula"><span class="req-check">✗</span> Una mayúscula</li>
+                <li data-req="numero"><span class="req-check">✗</span> Un número</li>
+                <li data-req="especial"><span class="req-check">✗</span> Un carácter especial</li>
+              </ul>
+            </div>
+
+            <button type="submit" class="btn btn-primario">Actualizar contraseña</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PADECIMIENTOS ============ -->
+    <section class="vista vista-interna" id="vista-padecimientos" hidden>
+      <header class="vista-encabezado">
+        <div>
+          <h1 class="titulo-pagina">Padecimientos</h1>
+          <p class="sub-pagina">Condiciones de salud registradas en el sistema.</p>
+        </div>
+        <button class="btn btn-primario solo-editor" id="btnNuevoPadecimiento">+ Nuevo padecimiento</button>
+      </header>
+
+      <div class="grid-3" id="listaPadecimientos"></div>
+    </section>
+
+    <!-- ============ ALIMENTOS ============ -->
+    <section class="vista vista-interna" id="vista-alimentos" hidden>
+      <header class="vista-encabezado">
+        <div>
+          <h1 class="titulo-pagina">Alimentos</h1>
+          <p class="sub-pagina">Alimentos clasificados por nivel de riesgo.</p>
+        </div>
+        <button class="btn btn-primario solo-editor" id="btnNuevoAlimento">+ Nuevo alimento</button>
+      </header>
+
+      <div class="filtros">
+        <label for="filtroPadecimiento">Filtrar por padecimiento:</label>
+        <select id="filtroPadecimiento">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="grid-3" id="listaAlimentos"></div>
+    </section>
+
+    <!-- ============ RECOMENDACIONES ============ -->
+    <section class="vista vista-interna" id="vista-recomendaciones" hidden>
+      <header class="vista-encabezado">
+        <div>
+          <h1 class="titulo-pagina">Mis recomendaciones</h1>
+          <p class="sub-pagina">Guía personalizada según tus padecimientos.</p>
+        </div>
+      </header>
+
+      <!-- Info del usuario -->
+      <div class="card card-usuario" id="infoUsuario">
+        <div class="usuario-avatar" aria-hidden="true">👤</div>
+        <div class="usuario-datos">
+          <h3 id="recoNombre">—</h3>
+          <p id="recoEmail" class="gris">—</p>
+          <span class="chip chip-rol" id="recoRol">—</span>
+        </div>
+        <div class="usuario-padecimientos">
+          <span class="etiqueta-mini">Padecimientos</span>
+          <div class="chips" id="recoPadecimientos"></div>
+        </div>
+      </div>
+
+      <!-- Mis padecimientos: registrar y listar (relación plan de comidas) -->
+      <div class="card card-mis-padecimientos">
+        <div class="mis-pad-encabezado">
+          <div>
+            <h2 class="titulo-seccion">Mis padecimientos</h2>
+            <p class="gris">Registra tus padecimientos para recibir recomendaciones personalizadas.</p>
+          </div>
+          <button class="btn btn-primario" id="btnRegistrarPadecimiento">+ Registrar padecimiento</button>
+        </div>
+        <div class="mis-pad-lista" id="misPadecimientos">
+          <p class="gris">Cargando…</p>
+        </div>
+      </div>
+
+      <!-- Alimentos por nivel de riesgo -->
+      <div class="grid-3 grid-niveles">
+        <div class="columna-nivel">
+          <h3 class="nivel-titulo nivel-recomendado">Recomendados</h3>
+          <div id="colRecomendados"></div>
+        </div>
+        <div class="columna-nivel">
+          <h3 class="nivel-titulo nivel-precaucion">Precaución</h3>
+          <div id="colPrecaucion"></div>
+        </div>
+        <div class="columna-nivel">
+          <h3 class="nivel-titulo nivel-evitar">Evitar</h3>
+          <div id="colEvitar"></div>
+        </div>
+      </div>
+
+      <!-- Ejemplos de platillos -->
+      <section class="seccion-platillos">
+        <h2 class="titulo-seccion">🍽️ Ejemplos de platillos</h2>
+        <div class="platillos" id="listaPlatillos"></div>
+      </section>
+    </section>
+
+  </main>
+
+  <!-- ============ MODAL GENÉRICO ============ -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+      <header class="modal-header">
+        <h3 id="modalTitulo">Título</h3>
+        <button class="modal-cerrar" id="modalCerrar" aria-label="Cerrar">✕</button>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ TOASTS ============ -->
+  <div class="toast-contenedor" id="toastContenedor" aria-live="polite"></div>
+
+   <!-- ============ FOOTER ============ -->
+  <footer class="landing-footer" id="contacto">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <a href="../index.html" class="logo logo-footer">
+          <img class="icono" src="../img/logo_white.webp" alt="Logo">
+        </a>
+        <p class="footer-desc">Come seguro, vive mejor. Tu guía de alimentación según tus padecimientos.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Únete a nuestro newsletter</h4>
+        <form class="newsletter" id="formNewsletter">
+          <input type="email" id="newsletterEmail" placeholder="ej: usuario@correo.com" aria-label="Correo para newsletter" />
+          <button type="submit" class="btn-newsletter" aria-label="Suscribirse">✉</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html#valor">Información</a></li>
+          <li><a href="../index.html#inicio">Inicio</a></li>
+          <li><a href="#" data-vista="login">Ingresar</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-copy">© 2026 SafeMeal — SMAS. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- ============ java script ============ -->
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeMeal</title>
+
+  <!-------  icono para pestañas  --------->
+    <!----Apple---->
+    <link rel="apple-touch-icon" href="img/icono.webp">
+     <!----windows/etc---->
+    <link rel="shortcut icon" type="image/x-icon" href="img/icono.webp">
+
+  <meta name="description" content="SafeMeal (SMAS): conoce qué alimentos consumir según tus padecimientos, clasificados por nivel de riesgo, con ejemplos de platillos." />
+ 
+  <!-------  Estilos  --------->  
+  <link rel="stylesheet" href="style/styles.css" />
+</head>
+<body class="pagina-landing">
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="landing-header" id="inicio">
+    <nav class="landing-nav">
+      <a href="index.html" class="logo">
+        <img class="icono" src="img/logo_white.webp" alt="Logo">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#valor">Información</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="btn btn-outline-light" href="pages/app.html#login">Login / Registrar</a></li>
+      </ul>
+    </nav>
+
+    <!-- ============ HERO / BANNER (SOLO en el index) ============ -->
+    <div class="hero">
+      <img class="hero-img" src="img/banner.webp" alt="Plato saludable de SafeMeal" />
+      <div class="hero-overlay"></div>
+      <div class="hero-contenido">
+        <h1 class="hero-titulo">Come seguro, vive mejor</h1>
+        <p class="hero-subtitulo">
+          Descubre qué alimentos te convienen según tus padecimientos,
+          clasificados por nivel de riesgo y con ejemplos de platillos hechos para ti.
+        </p>
+        <div class="hero-acciones">
+          <a class="btn btn-primario btn-lg" href="pages/app.html#registro">Crear Usuario</a>
+          <a class="btn btn-outline-light btn-lg" href="pages/app.html#login">Ingresar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <!-- Sección de valor: 3 tarjetas -->
+    <section class="seccion seccion-valor" id="valor">
+      <header class="seccion-encabezado">
+        <h2>Todo lo que necesitas para comer con seguridad</h2>
+        <p class="seccion-subtitulo">Una guía clara y personalizada para tu alimentación diaria.</p>
+      </header>
+
+      <div class="grid-3">
+        <article class="tarjeta-valor">
+          <div class="tarjeta-valor-icono" aria-hidden="true">🩺</div>
+          <h3>Conoce tus padecimientos</h3>
+          <p>Registra tus condiciones de salud y entiende cómo influyen en tu alimentación.</p>
+        </article>
+
+        <article class="tarjeta-valor">
+          <div class="tarjeta-valor-icono" aria-hidden="true">🚦</div>
+          <h3>Alimentos por nivel de riesgo</h3>
+          <p>Cada alimento se clasifica en recomendado, precaución o evitar, de forma visual y sencilla.</p>
+        </article>
+
+        <article class="tarjeta-valor">
+          <div class="tarjeta-valor-icono" aria-hidden="true">🍽️</div>
+          <h3>Platillos recomendados</h3>
+          <p>Recibe ejemplos de platillos pensados para tu perfil y tus necesidades.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bloque de contenido alternado -->
+    <section class="seccion seccion-info">
+      <div class="info-bloque">
+        <div class="info-media" aria-hidden="true">
+          <div class="info-media-circulo">🥗</div>
+        </div>
+        <div class="info-texto">
+          <h2>Pensado para cuidarte</h2>
+          <p class="info-item"><span class="viñeta"></span> Recomendaciones personalizadas según tus padecimientos registrados.</p>
+          <p class="info-item"><span class="viñeta"></span> Información clara sobre qué comer y qué evitar, sin tecnicismos.</p>
+          <p class="info-item"><span class="viñeta"></span> Ejemplos de platillos para que nunca te falten ideas.</p>
+          <a class="btn btn-primario" href="pages/app.html#registro">Comenzar ahora</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="landing-footer" id="contacto">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <a href="index.html" class="logo logo-footer">
+          <img class="icono" src="img/logo_white.webp" alt="Logo">
+        </a>
+        <p class="footer-desc">Come seguro, vive mejor. Tu guía de alimentación según tus padecimientos.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Únete a nuestro newsletter</h4>
+        <form class="newsletter" id="formNewsletter">
+          <input type="email" id="newsletterEmail" placeholder="ej: usuario@correo.com" aria-label="Correo para newsletter" />
+          <button type="submit" class="btn-newsletter" aria-label="Suscribirse">✉</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="#valor">Información</a></li>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="pages/app.html#login">Ingresar</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-copy">© 2026 SafeMeal — SMAS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
